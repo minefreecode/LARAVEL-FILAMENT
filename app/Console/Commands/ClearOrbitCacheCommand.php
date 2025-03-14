@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Orbit\Actions\ClearCache;
 
+
 class ClearOrbitCacheCommand extends Command
 {
     /**
@@ -28,6 +29,7 @@ class ClearOrbitCacheCommand extends Command
      */
     public function handle()
     {
+        //Очищает кеш Орбита
         app(ClearCache::class)();
 
         return Command::SUCCESS;

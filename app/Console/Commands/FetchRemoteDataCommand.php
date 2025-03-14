@@ -11,6 +11,11 @@ class FetchRemoteDataCommand extends Command
 
     protected $description = 'Fetch optional data from APIs';
 
+    /**
+     * Получить данные из Anystack
+     * @param FetchPluginDataFromAnystack $fetchPluginDataFromAnystack Подключаем сервис к команде
+     * @return int
+     */
     public function handle(
         FetchPluginDataFromAnystack $fetchPluginDataFromAnystack,
     ): int {

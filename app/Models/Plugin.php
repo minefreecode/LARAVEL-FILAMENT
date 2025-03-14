@@ -11,25 +11,50 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Schema\Blueprint;
 use Orbit\Concerns\Orbital;
 
+/**
+ * Модель описывающая плагины
+ */
 class Plugin extends Model implements Starrable
 {
+    /**Используем Orbital то есть все данные храним в папке plugins в виде файлов с расширением md
+     * Такие данные будут:
+     *
+     * ---
+     * name: Artisan Command Runner
+     * slug: 3x1io-tomato-artisan
+     * author_slug: 3x1io
+     * categories: [developer-tool]
+     * description: Simple but yet powerful library for running some artisan commands.
+     * discord_url: https://discord.com/channels/883083792112300104/1265002822605344871
+     * docs_url: https://raw.githubusercontent.com/tomatophp/filament-artisan/master/README.md
+     * github_repository: tomatophp/filament-artisan
+     * has_dark_theme: false
+     * has_translations: true
+     * versions: [2,3]
+     * publish_date: 2022-02-12
+     * ---
+     **/
     use Orbital;
 
+    //Первичный ключ для моделей
     protected $primaryKey = 'slug';
 
+    //Тип ключа строковой
     protected $keyType = 'string';
 
+    //Выключаем автоинкрементирование первичного ключа
     public $incrementing = false;
 
+    //Определяем конвертации
     protected $casts = [
-        'categories' => 'array',
-        'has_dark_theme' => 'boolean',
-        'has_translations' => 'boolean',
+        'categories' => 'array',//Тип массивов. Категории [developer-tool]
+        'has_dark_theme' => 'boolean',//Имеет темную тему. Булевый
+        'has_translations' => 'boolean', //Имеет переводы, булевый
         'is_lemon_squeezy_embedded' => 'boolean',
         'is_presale' => 'boolean',
         'is_draft' => 'boolean',
-        'versions' => 'array',
-        'publish_date' => 'date',
+        'versions' => 'array', //Массив [2,3]
+        'publish_date' => 'date', //Даты  2022-02-12
         'docs_urls' => 'array',
     ];
 
@@ -199,6 +224,10 @@ class Plugin extends Model implements Starrable
         return "plugin:{$this->slug}:price";
     }
 
+    /**
+     * Для кеша создан отдельный метод чтобы формировать его название c префиксом модели
+     * @return string
+     */
     public function getCheckoutUrlCacheKey(): string
     {
         return "plugin:{$this->slug}:checkout_url";
