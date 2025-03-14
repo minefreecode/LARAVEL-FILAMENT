@@ -15,9 +15,13 @@ class Star extends Model
         'is_vpn_ip' => 'boolean',
     ];
 
+    /**
+     * Описание со стороны модели к артиклям и плагинам
+     * @return MorphTo
+     */
     public function starrable(): MorphTo
     {
-        return $this->morphTo();
+        return $this->morphTo(); //Описание полиморфной связи
     }
 
     public function user(): BelongsTo

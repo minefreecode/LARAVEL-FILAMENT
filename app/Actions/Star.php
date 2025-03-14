@@ -7,6 +7,9 @@ use App\Models\Contracts\Starrable;
 use App\Models\Star as StarModel;
 use Illuminate\Support\Facades\RateLimiter;
 
+/**
+ * Класс-действие
+ */
 class Star
 {
     public function __invoke(Starrable $starrable): void

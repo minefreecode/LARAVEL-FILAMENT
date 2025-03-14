@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('stars', function (Blueprint $table) {
             $table->id();
             $table->string('ip');
-            $table->string('starrable_type');
-            $table->string('starrable_id');
+            $table->string('starrable_type');//Может относиться к артиклям и плагинам
+            $table->string('starrable_id');//Идентификатор артикля или статьи
             $table->timestamps();
 
-            $table->index(['starrable_type', 'starrable_id']);
+            $table->index(['starrable_type', 'starrable_id']); //Индекс по типу и идентификатору
         });
     }
 

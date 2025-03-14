@@ -49,6 +49,10 @@ class Article extends Model implements Starrable
         return $this->belongsTo(ArticleType::class, 'type_slug');
     }
 
+    /**
+     * Количество звёзд
+     * @return MorphMany
+     */
     public function stars(): MorphMany
     {
         return $this->morphMany(Star::class, 'starrable');
@@ -59,11 +63,16 @@ class Article extends Model implements Starrable
         return ArticleCategory::find($this->categories);
     }
 
+    /**
+     * Получить количество звёзд из мемкеша
+     * @return int
+     */
     public function getStarsCount(): int
     {
+        //если в кеше не существует будет вытаскивать из БД, а так будет брать из кеша
         return cache()->remember(
-            $this->getStarsCountCacheKey(),
-            now()->addDay(),
+            $this->getStarsCountCacheKey(),//Имя кеша, сгенерированное методом
+            now()->addDay(),//Хранит один день. То есть обновление кеша происходит каждый день
             fn (): int => $this->stars()->where(fn (Builder $query) => $query->whereNull('is_vpn_ip')->orWhere('is_vpn_ip', false))->count(),
         );
     }
