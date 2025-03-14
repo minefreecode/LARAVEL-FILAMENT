@@ -94,13 +94,20 @@ class Plugin extends Model implements Starrable
         return $this->morphMany(Star::class, 'starrable');
     }
 
+    /**
+     * Скоуп что это черновик
+     *
+     * @param Builder $query
+     * @param bool $condition Условие
+     * @return Builder
+     */
     public function scopeDraft(Builder $query, bool $condition = true): Builder
     {
         if (! $condition) {
-            return $query->whereNull('is_draft')->orWhere('is_draft', false);
+            return $query->whereNull('is_draft')->orWhere('is_draft', false); //Проверяем null ли это или false
         }
 
-        return $query->where('is_draft', true);
+        return $query->where('is_draft', true); //Если черновик
     }
 
     public function getDocUrl(string $version = null): ?string

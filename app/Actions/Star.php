@@ -40,7 +40,7 @@ class Star
         }
 
         if (! $existingIpStar) {
-            dispatch(new CheckIfIpIsVpn(request()->ip()));
+            dispatch(new CheckIfIpIsVpn(request()->ip())); //Запуск проверки IP
         }
     }
 }

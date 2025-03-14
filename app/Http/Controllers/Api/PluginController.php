@@ -13,10 +13,10 @@ class PluginController extends Controller
     {
         return Plugin::query()
             ->when(
-                $request->boolean('draft'),
-                fn (Builder $query, bool $condition) => $query->draft($condition)
+                $request->boolean('draft'),//Выполняется только тогда когда draft=true. Запрос не каждый раз включается
+                fn (Builder $query, bool $condition) => $query->draft($condition) //проверяется по скоупу.
             )
-            ->paginate();
+            ->paginate();//Постраничный просмотр
     }
 
     public function show(Plugin $plugin)

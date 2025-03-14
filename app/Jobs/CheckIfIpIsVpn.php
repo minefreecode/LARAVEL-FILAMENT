@@ -31,19 +31,21 @@ class CheckIfIpIsVpn implements ShouldQueue
      */
     public function handle(): void
     {
+        //Получаем звезды по IP-адресу
         $existingIpStar = Star::query()
             ->where('ip', $this->ip)
             ->whereNotNull('is_vpn_ip')
             ->first();
 
         if ($existingIpStar) {
+            //
             Star::query()
                 ->where('ip', $this->ip)
                 ->update(['is_vpn_ip' => $existingIpStar->is_vpn_ip]);
 
             return;
         }
-
+        //Проверка что ip это vpn
         $isVpn = Http::retry(10)
             ->throw()
             ->get('https://vpnapi.io/api/' . $this->ip . '?key=' . config('services.vpn_api.token'))
@@ -55,6 +57,7 @@ class CheckIfIpIsVpn implements ShouldQueue
             return;
         }
 
+        //Обновляем для звёзд, добавлены ли они роботом
         Star::query()
             ->where('ip', $this->ip)
             ->update(['is_vpn_ip' => $isVpn]);

@@ -19,6 +19,6 @@ $advertisementChannel = collect($advertismentChannels)->keyBy('id')['da7855a9-36
         );
 ```
 
-
+Интересно написан скуоп по черновикам, когда `false` проверяется на значения `null` и `false`.
 
 
