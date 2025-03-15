@@ -58,6 +58,7 @@ Route::get('/api/{version?}', function (string $version = '3.x'): RedirectRespon
     return redirect('/api/' . $version . '/index.html');
 })->where('version', '[1-3]+\.x')->name('api-docs');
 
+//Документация
 Route::prefix('/docs')->group(function () {
     Route::redirect('/getting-started', '/docs/panels/getting-started');
     Route::redirect('/resources', '/docs/panels/resources/getting-started');

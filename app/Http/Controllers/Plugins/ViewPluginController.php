@@ -16,6 +16,7 @@ class ViewPluginController extends Controller
         $plugin = Plugin::find($pluginSlug);
 
         if ($plugin) {
+            //SEO
             seo()
                 ->title("{$plugin->name} by {$plugin->author->name}")
                 ->description($plugin->description)

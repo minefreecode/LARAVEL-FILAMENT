@@ -9,9 +9,10 @@ class ViewArticleController extends Controller
 {
     public function __invoke(Article $article)
     {
+        //Добавляет в проект теги для SEO
         seo()
-            ->title("{$article->title} by {$article->author->name}")
-            ->image('https://previewlinks.io/generate/templates/1055/meta?url=' . url()->current())
+            ->title("{$article->title} by {$article->author->name}") //Имя статьи и автор
+            ->image('https://previewlinks.io/generate/templates/1055/meta?url=' . url()->current())//Картинка
             ->tag('previewlinks:overline', 'Filament')
             ->tag('previewlinks:title', $article->title)
             ->tag('previewlinks:subtitle', "By {$article->author->name}")

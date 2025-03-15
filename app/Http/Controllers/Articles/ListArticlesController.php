@@ -14,6 +14,7 @@ class ListArticlesController extends Controller
 {
     public function __invoke()
     {
+        //SEO
         seo()
             ->title('Articles')
             ->description('A collection of articles written by the Filament team and our community.')
@@ -25,9 +26,10 @@ class ListArticlesController extends Controller
             ->tag('previewlinks:repository', 'filament/filament');
 
         return view('articles.list-articles', [
+            //Сохранять в кеше
             'articles' => cache()->remember(
                 'articles',
-                now()->addMinutes(15),
+                now()->addMinutes(15), //Обновлять каждцые 15 минут
                 function (): array {
                     $stars = Star::query()
                         ->toBase()
@@ -46,7 +48,7 @@ class ListArticlesController extends Controller
                         ->map(fn (Article $article): array => [
                             ...$article->getDataArray(),
                             'stars_count' => $stars[$article->getKey()] ?? 0,
-                        ])
+                        ]) //Цикл по элементам массива
                         ->all();
                 },
             ),

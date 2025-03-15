@@ -14,6 +14,7 @@ class ListPluginsController extends Controller
 {
     public function __invoke(GetPluginsListData $getPluginsListData)
     {
+        //SEO-оптимизации
         seo()
             ->title('Plugins')
             ->description('Community made packages for Filament projects, which give you access to awesome new features.')

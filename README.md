@@ -19,6 +19,10 @@ $advertisementChannel = collect($advertismentChannels)->keyBy('id')['da7855a9-36
         );
 ```
 
-Интересно написан скуоп по черновикам, когда `false` проверяется на значения `null` и `false`.
+Интересно написан скоуп по черновикам, когда `false` проверяется на значения `null` и `false`.
+
+В проекте применяется интеграция SEO [SEO](https://github.com/minefreecode/laravel-seo)
+
+
 
 
