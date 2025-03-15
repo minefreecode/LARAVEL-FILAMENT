@@ -23,6 +23,29 @@ $advertisementChannel = collect($advertismentChannels)->keyBy('id')['da7855a9-36
 
 В проекте применяется интеграция SEO [SEO](https://github.com/minefreecode/laravel-seo)
 
+## Стили Tailwind
+    включает flex,  
+    flex-col -вертикально по оси флекса, 
+    rounded-xl  - округление элемента, 
+    p-7 - паддинг, 
+    text-center - центрирует текст 
+
+    aspect-square - соотношение сторон как квадрат,
+    w-28 - задает ширину элемента,
+    rounded-full - делает полное закругление
+    transition - переходы при наведении
+    duration-300 - время перехода для transition
+    lg:w-36 - для широких экранов применяется только такой стиль
+
+    text-2xl - размер текста. текст в 2 раза сверхбольшой
+    font-bold - вес текста
+    lg:text-3xl - для больших экранов в 3 раза сверхбольшой
+
+    pt-1 - паддинг верхний
+    text-base  - размер текста базовый
+    font-medium - шрифт средний
+    text-dolphin - цвет #6C6489
+    lg:text-lg - для больших экранов шрифт другой
 
 
 
