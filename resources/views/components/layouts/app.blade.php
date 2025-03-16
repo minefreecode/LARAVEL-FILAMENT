@@ -1,10 +1,15 @@
 @props([
     'heading' => null,
 ])
-
+<!-- Включаем содержимое шаблона в базовый шаблон -->
 <x-layouts.base {{ $attributes }}>
+    <!-- Компонент для навигации-->
     <x-nav />
+<!--
+x-data  - доступен во всех дочерних элементах
+x-show  - видимость элемента
 
+-->
     <button
         x-data="{}"
         x-show="$store.sidebar.isOpen"

@@ -1,3 +1,8 @@
+<!--
+ x-cloak - скрывать при загрузке
+x-ref - для легкого доступа к элементу непосредственно
+x-init - при инициализации элемента Alphine
+ -->
 <section
     class="mx-auto w-full max-w-8xl px-5 sm:px-10"
     x-cloak
@@ -6,7 +11,7 @@
         () => {
             // Reset the page number on search input change
             $watch('search', (newValue, oldValue) => {
-                if (newValue !== oldValue) {
+                if (newValue !== oldValue) { //Если текущее значение не совпадает с новым значением
                     currentPage = 1
                 }
             })
@@ -36,7 +41,7 @@
 
             if (reducedMotion) return
             gsap.fromTo(
-                $refs.section,
+                $refs.section, //Ссылка на свой элемент Aplhine
                 {
                     autoAlpha: 0,
                     y: 50,

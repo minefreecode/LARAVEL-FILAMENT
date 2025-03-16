@@ -4,19 +4,20 @@
     'title',
 ])
 
+<!--
+div объявляется с прикрепленными данными
+    включает flex,
+    flex-col -вертикально по оси флекса,
+    rounded-xl  - округление элемента,
+    p-7 - паддинг,
+    text-center - центрирует текст
+-->
 <div
     x-data="{
         book_is_hovered: false,
     }"
     class="flex flex-col items-center rounded-xl bg-merino/50 p-7 text-center"
 >
-    <!--
-    включает flex,
-    flex-col -вертикально по оси флекса,
-    rounded-xl  - округление элемента,
-    p-7 - паддинг,
-    text-center - центрирует текст
-    -->
     {{--
     aspect-square - соотношение сторон как квадрат,
     w-28 - задает ширину элемента,
@@ -70,16 +71,22 @@
          mx-auto - для горизонтального центрирования
          my-4 - вертикальные марджины
          h-px - высота 1 пиксель
-         w-full
+         w-full - ширина на полный экран
          max-w-[23rem] - для ограничения ширины
-         rounded-full
-         bg-dolphin/20
+         rounded-full - полное закругление
+         bg-dolphin/20 - фон
          --}}
         <div
             class="mx-auto my-4 h-px w-full max-w-[23rem] rounded-full bg-dolphin/20"
         ></div>
 
-        {{-- Description --}}
+        {{--
+        prose - для задания шрифта
+         px-3 - паддинг справа и слева
+         text-dolphin - шрифт
+         prose-a:text-burnt-dolphin - стили текста
+         prose-strong:text-burnt-dolphin - стили текста
+         --}}
         <div
             class="prose px-3 text-dolphin prose-a:text-burnt-dolphin prose-strong:text-burnt-dolphin"
         >

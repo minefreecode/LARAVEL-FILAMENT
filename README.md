@@ -47,5 +47,10 @@ $advertisementChannel = collect($advertismentChannels)->keyBy('id')['da7855a9-36
     text-dolphin - цвет #6C6489
     lg:text-lg - для больших экранов шрифт другой
 
+## В проекте используется `Aphine.js`, который прикрепляется при загрузке `js` вот так:
+```import Alpine from 'alpinejs'```
+
+
+
 
 
